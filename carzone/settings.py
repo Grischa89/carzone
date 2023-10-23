@@ -55,7 +55,7 @@ ROOT_URLCONF = 'carzone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': ['templates'], # version where templates is for all apps
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,7 +80,6 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -119,3 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static') # path to css imgs... wohin kopiert collectstaic alles
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'carzone/static'), # collectstatic guckt in die einzelnen apps (standard von wo), zusätzlich in den hier angegeben pfad
+                    ]
